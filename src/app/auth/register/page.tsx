@@ -7,10 +7,10 @@ export default function page() {
       <div
         className="text-black flex cursor-pointer h-auto w-64 items-center justify-center rounded-md border border-gray-300 px-4 py-2"
         onClick={() => {
-          signIn();
+          signIn("google", { redirect: false });
         }}
       >
-        Login
+        Register
       </div>
     </div>
   );

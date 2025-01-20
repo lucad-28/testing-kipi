@@ -17,6 +17,14 @@ const handler = NextAuth({
       privateKey: process.env.AUTH_FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
     }),
   }),
+  callbacks: {
+    redirect() {
+      return "/dashboard";
+    },
+  },
+  pages: {
+    signIn: "/auth/login",
+  },
 });
 
 export { handler as GET, handler as POST };
