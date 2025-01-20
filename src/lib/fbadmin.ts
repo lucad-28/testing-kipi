@@ -1,8 +1,5 @@
-import { config } from "dotenv";
 import { cert, initializeApp, ServiceAccount } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-
-config();
 
 const serviceAccount: ServiceAccount = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,

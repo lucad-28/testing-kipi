@@ -1,10 +1,5 @@
 import { db } from "@/lib/fbadmin";
-import {
-  RejectReason,
-  Transaction,
-  TransactionStatus,
-  TransactionTimestamps,
-} from "./types";
+import { RejectReason, Transaction, TransactionStatus } from "./types";
 import { Timestamp } from "firebase-admin/firestore";
 
 const createTransaction = async (transaccion: Transaction): Promise<void> => {
@@ -58,7 +53,7 @@ const rejectTransaction = async (
   id: string,
   reject_reason: RejectReason
 ): Promise<void> => {
-  let transaction = await getTransaction(id);
+  const transaction = await getTransaction(id);
   transaction.status = "rejected";
   transaction.reject_reason = reject_reason;
   await updateTransaction(id, transaction);
@@ -87,13 +82,13 @@ const changeTransactionStatus = async (
   id: string,
   status: TransactionStatus
 ): Promise<void> => {
-  let transaction = await getTransaction(id);
+  const transaction = await getTransaction(id);
   transaction.status = status;
   await updateTransaction(id, transaction);
 };
 
 const closeTransaction = async (id: string): Promise<void> => {
-  let transaction = await getTransaction(id);
+  const transaction = await getTransaction(id);
   transaction.status = "approved";
   await updateTransaction(id, transaction);
 };
